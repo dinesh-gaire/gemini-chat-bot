@@ -1,8 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
 const ChatBubble = ({role, text, onSpeech}) => {
+  useEffect(()=>{
+    text && onSpeech();
+  },[text])
   return (
     <View style={[styles.chatItem, role==="user"?styles.userChatItem:styles.modelChatItem]}>
       <Text style={styles.chatText}>{text}</Text>
